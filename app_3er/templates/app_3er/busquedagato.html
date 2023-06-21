@@ -1,0 +1,35 @@
+
+
+{% extends "app_3er/padre.html" %}
+
+
+{% block title %}
+Cursos
+{% endblock title %}
+
+{% load static%}
+
+{% block busquedagato %}
+
+<!-- Content section 1-->
+<section id="scroll">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <!-- <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/01.jpg" %}' alt="..." /></div>-->
+                <form action="/app_3er/buscar/" method="GET">
+                    <input type="text" name="nombre" id="nombre">
+                    <input type="submit" value="buscar">
+                </form>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Buscar gato &#128008</h2>
+                    <p>¡Encuentra a tu compañero felino ideal! Utiliza nuestro buscador al estilo de Google para buscar gatos disponibles para adopción por su nombre. Simplemente ingresa el nombre del gato que deseas adoptar y descubre si está esperando por ti. ¡Tu nuevo amigo peludo te está esperando! </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock busquedagato %}

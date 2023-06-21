@@ -1,0 +1,20 @@
+{% extends "app_3er/padre.html" %}
+
+{% load static%}
+
+{% block resultado_busqueda_gato %}
+
+<p> Estamos buscando el gato/a: {{nombre}} </p>
+	
+	{% if sexo %}
+
+	<ul>
+	{% for adopcion in sexo %}
+			<li> Nombre del gato/a: {{adopcion.nombre}} </li>
+			<li> Sexo: {{adopcion.sexo}} </li>
+	{% endfor %}
+	</ul>
+
+	{% endif %}
+
+{% endblock resultado_busqueda_gato %}

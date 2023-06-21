@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        {% for adopcion in object_list %}
+            <li>
+                <p>Nombre: {{ adopcion.nombre }}</p>
+                <p>
+                    <a href="{% url 'Detail' adopcion.id %}">Ver</a>
+                    <a href="{% url 'Edit' adopcion.id %}">Editar</a>
+                    <a href="{% url 'Delete' adopcion.id %}">Borrar</a>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+</body>
+</html>

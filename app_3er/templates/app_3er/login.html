@@ -1,0 +1,8 @@
+<form action="" method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Iniciar sesion</button>
+</form>
+
+<button type="submit"><a href="{% url 'registro' %}">En caso de no tener un usuario, Registrarse</a></button>
+

@@ -1,0 +1,46 @@
+{% extends "app_3er/padre.html" %}
+
+{% block title %}
+Listado de gatos
+{% endblock title %}
+
+{% load static%}
+
+{% block leergatos %}
+<!-- Content section 3-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/cane4.jpeg" %}' alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Todos los gatites</h2>
+                    
+                    
+                    {% for miau in gatos%}  
+                        <li>{{ miau }}</li>
+                        <button>
+                            <a href="{% url 'borrargatos' miau.nombre %}"> Eliminar </a>
+                            <a href="{% url 'editargatos' miau.nombre %}"> Editar </a>
+                        </button>
+                    {% endfor %}
+
+                    {% if miFormulario %}
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ miFormulario.as_p }}
+                            <button type="submit">Guardar</button>
+                        </form>
+                    {% endif %}
+
+                    <br>
+                    <a href="{% url 'adopciones' %}">Agregar otro gato</a>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock leergatos %}

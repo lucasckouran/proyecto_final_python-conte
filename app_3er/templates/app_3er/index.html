@@ -1,0 +1,103 @@
+{% extends "app_3er/padre.html" %}
+
+{% block title %}
+                Index
+{% endblock title %}
+
+{% load static%}
+
+{% block index %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <h2 {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h2>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% if request.user.is_authenticated %}
+<!-- Mostrar avatar-->
+<div class="text-center" >
+	<img height="100px" src="{{ url }}">
+	<h3> Que bueno verte {{ user.username }}</h3>
+    <!-- Boton editar perfil -->
+    <button type="submit"><a href="{% url 'editarperfil' %}">Editar Perfil</a></button>
+</div>
+{% endif %}
+
+        <!-- Content section 1-->
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/videocane.gif" %}' alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Adopciones</h2>
+                            <p>¡Dale un hogar a un gato callejero! Nuestra asociación de adopciones rescata mininos y busca familias amorosas que les brinden un hogar seguro. Cada adopción cambia vidas: alegría, ronroneos y compañía incondicional. ¡Adopta un gatito y conviértete en su héroe de cuatro patas! #AdoptaNoCompres</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content section 2-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/malbec.jpg" %}' alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">Gatites en Transito</h2>
+                            <p>¡Brinda un refugio temporal a los gatos en tránsito! Nuestra asociación se encarga de rescatar y cuidar a estos mininos mientras buscamos hogares definitivos. Tu ayuda es crucial para brindarles amor, cuidados y un ambiente seguro. Sé parte de su proceso de transición y ayúdalos a encontrar un hogar permanente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content section 3-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/malbec2.jpeg" %}' alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Donaciones</h2>
+                            <p>¡Ayúdanos a salvar vidas felinas! Tu generosa donación marca la diferencia en nuestra asociación de adopciones de gatos callejeros. Con tu apoyo, podemos proporcionar atención médica, alimentación de calidad y refugio seguro a estos mininos necesitados. Cada contribución nos acerca más a encontrarles hogares amorosos y brindarles una segunda oportunidad. ¡Dona hoy y sé parte del cambio en la vida de estos adorables gatitos!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content section 4-->
+        <section>
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/gatonegro.webp" %}' alt="..." /></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 id="contactanos" class="display-4">Contactanos!</h2>
+                            <p>¡Estamos aquí para ayudarte en tu viaje de adopción de gatos! No dudes en ponerte en contacto con nosotros a través de <strong>WhatsApp</strong> al número <strong>11-1234-5678</strong>. Estaremos encantados de responder a tus preguntas, brindarte más información sobre nuestros gatos disponibles y guiarte en el proceso de adopción. ¡Esperamos recibir tu mensaje y ayudarte a encontrar a tu nuevo compañero felino!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+</section>
+
+
+        
+{% endblock index %}

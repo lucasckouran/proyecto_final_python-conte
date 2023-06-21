@@ -1,0 +1,46 @@
+{% extends "app_3er/padre.html" %}
+
+{% block title %}
+Estudiantes
+{% endblock title %}
+
+{% load static%}
+
+{% block adoptantes %}
+<!-- Content section 3-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/bariloche.jpeg" %}' alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Adoptantes</h2>
+                    <p>¡Descubre a nuestros increíbles adoptantes registrados! En nuestro sitio web, podrás conocer a las personas maravillosas que han dado hogar y amor a nuestros gatos callejeros. Verás sus historias inspiradoras y cómo han transformado vidas felinas. ¡Únete a nuestra comunidad y sé parte de esta hermosa red de adopciones! </p>
+                    <h1>Ingresa al adoptante</h1>
+                    {% if miFormulario.errors %}
+                    
+                    <p style="color:red;">Estan mal los datos, revisar </p>
+                    
+                    {% endif %}
+                    
+                    <form action="" method="POST"> {% csrf_token %}
+                    
+                            <table> 
+                                    {{ miFormulario.as_table }}
+                            </table>
+                    
+                            <input type="submit" value="Enviar">
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+{% endblock adoptantes %}
+
+

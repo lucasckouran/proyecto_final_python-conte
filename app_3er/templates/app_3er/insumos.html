@@ -1,0 +1,46 @@
+{% extends "app_3er/padre.html" %}
+
+{% block title %}
+Insumos
+{% endblock title %}
+
+{% load static%}
+
+{% block insumos %}
+<!-- Content section 3-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/cane3.jpeg" %}' alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">Insumos</h2>
+                    <p>En nuestra asociación, nos preocupamos por el bienestar de nuestros gatos callejeros. Contamos con insumos esenciales como medicamentos y comida para satisfacer sus necesidades diarias. Sin embargo, siempre apreciamos y recibimos con gratitud donaciones de estos insumos. Tu generosidad nos permite seguir brindando el cuidado adecuado y garantizar que cada gato tenga una vida feliz y saludable. ¡Tu contribución marca la diferencia en sus vidas!</p>
+                    <h1>Ingresa el insumo</h1>
+                    {% if miFormulario.errors %}
+                    
+                    <p style="color:red;">Estan mal los datos, revisar </p>
+                    
+                    {% endif %}
+                    
+                    <form action="" method="POST"> {% csrf_token %}
+                    
+                            <table> 
+                                    {{ miFormulario.as_table }}
+                            </table>
+                    
+                            <input type="submit" value="Enviar">
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+
+{% endblock insumos %}
