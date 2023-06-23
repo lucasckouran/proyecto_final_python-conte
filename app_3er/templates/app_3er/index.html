@@ -24,6 +24,8 @@
 	<h3> Que bueno verte {{ user.username }}</h3>
     <!-- Boton editar perfil -->
     <button type="submit"><a href="{% url 'editarperfil' %}">Editar Perfil</a></button>
+    <!-- Boton editar avatar -->
+    <button type="submit"><a href="{% url 'agregaravatar' %}">Editar Avatar</a></button>
 </div>
 {% endif %}
 
