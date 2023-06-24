@@ -1,0 +1,31 @@
+{% extends "app_3er/padre.html" %}
+
+{% block title %}
+About
+{% endblock title %}
+
+{% load static%}
+
+
+{% block about %}
+<!-- Content About-->
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="p-5"><img class="img-fluid rounded-circle" src='{% static "app_3er/assets/img/chelsea.jpg" %}' alt="..." /></div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <div class="p-5">
+                    <h2 class="display-4">About Me</h2>
+                    <p>Hola, mi nombre es Lucas Conte, soy licenciado en Marketing y trabajo hace mas de 5 años en marketing digital. Luego de realizar un curso en coder house en 2018 sobre publicidad en redes avanzado, comence a trabajar especificamente en la industria.</br></br> Pero senti que si queria marcar la diferencia tenia que seguir profundizando conocimientos, por lo que realice cursos en Diseño web, aprendiendo HTML,CSS3, Bootstrap y un poco de Javascript. </br> </br>Luego me comenzo a interesar el mundo de las bases de datos, por lo que realice un curso en SQL. Pero senti que necesitaba aplicar y profundizar estos conocimientos, razon por la cual me anote para realizar el curso de Python en Coder. </br></br> Creo que mi proximo camino es seguir profundizando con Python y aplicarlo dentro de mi carrera, y seguir aprendiendo sobre programacion en la nube</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+
+{% endblock about %}

@@ -25,5 +25,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name="app_3er/logout.html"), name = "Logout"),
     path('editarperfil', views.editarperfil, name="editarperfil"),
     path('agregaravatar/', views.agregaravatar, name="agregaravatar"),
+    path('about/', views.about, name = 'about'),
 
 ]

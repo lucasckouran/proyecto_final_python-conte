@@ -41,6 +41,7 @@
                         {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'Logout' %}">Logout</a></li>
                         {% endif %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
                     </ul>
                 </div>
             </div>
@@ -80,6 +81,8 @@
         {% block leergatos %}
         {% endblock leergatos %}
 
+        {% block about %}
+        {% endblock about %}
 
         
         <!-- Footer-->

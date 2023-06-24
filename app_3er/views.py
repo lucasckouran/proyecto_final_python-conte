@@ -57,6 +57,10 @@ def insumos(request):
 
 	return render(request, "app_3er/insumos.html",{"miFormulario":miFormulario})
 
+
+def about(request):
+	return render(request, "app_3er/about.html")
+
 def adoptantes(request):
 	if request.method == "POST":
 		miFormulario = AdoptanteFormulario(request.POST)
