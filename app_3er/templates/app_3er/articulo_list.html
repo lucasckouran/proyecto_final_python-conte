@@ -1,0 +1,43 @@
+{% extends "app_3er/padre.html" %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+{% load static%}
+
+
+{% block blog %}
+
+<!-- Content Blog-->
+<section>
+  <div class="container px-5">
+    <div class="row gx-5 align-items-center">
+<button type="submit"><a href="{% url 'articulo_create' %}">Crear nueva entrada</a></button>
+</br></br>
+<button type="submit"><a href="{% url 'index' %}">Volver a inicio</a></button>
+</br></br>
+
+
+{% for articulo in object_list %}
+  <h2>{{ articulo.titulo }}</h2>
+  <p>Autor: {{ articulo.autor }}</p>
+  <p>Fecha de publicación: {{ articulo.fecha_publicacion|date:"F d, Y" }}</p>
+  <p>{{ articulo.contenido }}</p>
+  <a href="{% url 'articulo_detail' articulo.pk %}">Ver detalles</a>
+  {% if articulo.autor == request.user %}
+    <a href="{% url 'articulo_update' articulo.pk %}">Editar</a>
+    <a href="{% url 'articulo_delete' articulo.pk %}">Borrar</a>
+  {% endif %}
+  <hr>
+{% empty %}
+  <p>No hay artículos disponibles.</p>
+{% endfor %}
+
+</div>
+</div>
+</div>
+</section>
+
+{% endblock blog %}
+

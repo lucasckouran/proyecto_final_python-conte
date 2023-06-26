@@ -32,6 +32,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'insumos' %}">Insumos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'busquedagato' %}">Buscador de gatos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'leergatos' %}">Listado de gatos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'articulo_list' %}">Blog</a></li>
                         {% if not request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'Login' %}">Login</a></li>
                         {% endif %}
@@ -83,6 +84,9 @@
 
         {% block about %}
         {% endblock about %}
+
+        {% block blog %}
+        {% endblock blog %}
 
         
         <!-- Footer-->

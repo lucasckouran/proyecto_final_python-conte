@@ -1,0 +1,7 @@
+<h2>{{ articulo.titulo }}</h2>
+<p>Autor: {{ articulo.autor }}</p>
+<p>{{ articulo.contenido }}</p>
+{% if articulo.autor == request.user %}
+  <a href="{% url 'articulo_update' articulo.pk %}">Editar</a>
+  <a href="{% url 'articulo_delete' articulo.pk %}">Borrar</a>
+{% endif %}

@@ -1,0 +1,13 @@
+<h2>{{ object.titulo }}</h2>
+<p>Autor: {{ object.autor }}</p>
+<p>{{ object.contenido }}</p>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Borrar">
+</form>
+
+{% if object.autor == request.user %}
+  <a href="{% url 'articulo_update' object.pk %}">Editar</a>
+  <a href="{% url 'articulo_delete' object.pk %}">Borrar</a>
+{% endif %}

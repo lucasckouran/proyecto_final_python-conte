@@ -1,5 +1,5 @@
 from django import forms
-from .models import Adopcion
+from .models import Adopcion, Articulo
 # importaciones para usuarios ----------------------------------------------------------------------------------
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -41,7 +41,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
         # saca los mensajes de ayuda
         help_texts = {k: "" for k in fields}
 
@@ -64,3 +64,10 @@ class UserEditForm(UserCreationForm):
 
 class AvatarFormulario(forms.Form):
     imagen = forms.ImageField()
+
+
+# blog ------------------------------------------------------
+class ArticuloForm(forms.ModelForm):
+    class Meta:
+        model = Articulo
+        fields = ['titulo', 'contenido']

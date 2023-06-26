@@ -26,5 +26,13 @@ urlpatterns = [
     path('editarperfil', views.editarperfil, name="editarperfil"),
     path('agregaravatar/', views.agregaravatar, name="agregaravatar"),
     path('about/', views.about, name = 'about'),
+    # Rutas para listar y ver detalles de los artículos
+    path('blog/', views.ArticuloList.as_view(), name='articulo_list'),
+    path('blog/<int:pk>/', views.ArticuloDetalle.as_view(), name='articulo_detail'),
+    # Rutas para crear, editar y borrar artículos
+    path('blog/nuevo/', views.ArticuloCreacion.as_view(), name='articulo_create'),
+    path('blog/editar/<int:pk>/', views.ArticuloUpdate.as_view(), name='articulo_update'),
+    path('blog/borrar/<int:pk>/', views.ArticuloDelete.as_view(), name='articulo_delete'),
+    
 
 ]

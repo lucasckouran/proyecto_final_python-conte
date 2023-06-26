@@ -9,12 +9,10 @@ from django.urls import reverse_lazy
 # importaciones para usuarios ----------------------------------------------------------------------------------
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-
-
 
 
 
@@ -111,21 +109,6 @@ def borrargatos(request, gato_nombre):
 	return render(request, "app_3er/leergatos.html", contexto)
 
 
- #def editargatos(request, gato_nombre): #esto lo dejamos de usar ya que comenzamos a utilizara el modelForm, porque cuando editabamos un gato se creaba otro
-	gato = Adopcion.objects.get(nombre=gato_nombre)
-	# Si el metodo es POST hago lo mismo que el agregar
-	if request.method == "POST":
-		miFormulario = AdopcionFormulario(request.POST)
-		print(miFormulario)
-		if miFormulario.is_valid():
-			informacion = miFormulario.cleaned_data
-			gato= Adopcion(nombre = informacion["nombre"], sexo= informacion["sexo"])
-			gato.save()	
-			return render(request,"app_3er/index.html")
-	else:
-		miFormulario = AdopcionFormulario({"nombre": gato.nombre, "sexo": gato.sexo})
-	return render(request, "app_3er/leergatos.html",{"miFormulario":miFormulario, "gato_nombre":gato_nombre})
-
 def editargatos(request, gato_nombre):
     # Recibe el nombre del gato que vamos a modificar
     gato = Adopcion.objects.get(nombre=gato_nombre)
@@ -214,8 +197,6 @@ class ClaseQueNecesitaLogin(LoginRequiredMixin):
 
 	template_name = "leergatos.html"
 
-
-
 @login_required
 def editarperfil(request):
     # instancia del login
@@ -267,3 +248,49 @@ def agregaravatar(request):
         miFormulario = AvatarFormulario()  # Formulario vacío para construir el HTML
 
     return render(request, "app_3er/agregaravatar.html", {"miFormulario": miFormulario})
+
+
+# blog ----------------------------------------------------------------
+
+class ArticuloList(ListView):
+    model = Articulo
+    template_name = "app_3er/articulo_list.html"
+
+
+class ArticuloDetalle(DetailView):
+    model = Articulo
+    template_name = "app_3er/articulo_detalle.html"
+
+class ArticuloCreacion(LoginRequiredMixin, CreateView):
+    model = Articulo
+    template_name = "app_3er/articulo_creacion.html"
+    fields = ['titulo', 'contenido']
+    success_url = "/app_3er/blog/"  # URL a la que se redirige después de crear una nueva entrada
+
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
+
+
+class ArticuloUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Articulo
+    template_name = "app_3er/articulo_update.html"
+    fields = ['titulo', 'contenido']
+    success_url = "/app_3er/blog/"  # Especifica la URL de redirección
+
+    def test_func(self):
+        articulo = self.get_object()
+        return self.request.user == articulo.autor
+
+
+class ArticuloDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Articulo
+    template_name = "app_3er/articulo_delete.html"
+    success_url = "/app_3er/blog/"  # Agrega la URL deseada aquí
+
+    def test_func(self):
+        articulo = self.get_object()
+        return self.request.user == articulo.autor
+
+    
+    
